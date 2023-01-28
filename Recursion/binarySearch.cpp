@@ -1,34 +1,39 @@
 //WAP to implement binary search using recursion.
 #include<iostream>
 using namespace std;
-bool binarySearch(int *arr, int size, int key, int s){
-    int e = size - 1;
-    int mid = (s + e) / 2;
-
-    if(size == 0)
+bool binarySearch(int *arr, int s, int e, int key){
+    //Base case
+    if(s>e)
     return 0;
 
-    if(key == arr[mid])
-    return 1;
+    //Solve one Case
+    int mid = s + (e-s) / 2;
+    if(key == arr[mid]){
+        return 1;
+    }
 
     if(key > arr[mid]){
-        int ans1 = binarySearch(arr,size,key,mid+1);
-        return ans1;
+        s = mid + 1;
+        return binarySearch(arr,s,e,key);
     }
 
     else{
-        int ans = binarySearch(arr,size-mid,key,s);
-        return ans;
+        e = mid - 1;
+        return binarySearch(arr,s,e,key);
     }
-
+    
 }
 int main(){
     int result,key;
-    int arr[5] = {1,2,3,4,5};
+    int arr[9] = {1,2,3,4,5,77,88,99,101};
     cout<<"Enter the element you want to search: "<<endl;
     cin>>key;
-    result = binarySearch(arr,5,key,0);
-    // cout<<((result) == 1) ? "Present" : "Not Present";
-    cout<<result;
+    result = binarySearch(arr,0,8,key);
+    // result = binarySearch(arr,5,key,0);
+    if(result == 1)
+    cout<<"Element is present in the array. "<<endl;
+    else{
+        cout<<"Element is not present in the array"<<endl;
+    }
     return 0;
 }

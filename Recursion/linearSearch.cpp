@@ -6,7 +6,7 @@ bool isPresent(int *arr, int size, int element){
     if(size == 0)
     return 0;
 
-    if(element == arr[size])
+    if(element == arr[size-1])
     return 1;
 
 

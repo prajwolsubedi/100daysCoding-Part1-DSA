@@ -2,7 +2,7 @@
 using namespace std;
 bool checkPalindrome(string str, int i, int j){
     //Base case
-    if(i>j)
+    if(i >= j)
     return 1;
 
     if(str[i] != str[j])
@@ -10,10 +10,10 @@ bool checkPalindrome(string str, int i, int j){
 
     //Recursive Relation
     else
-    return checkPalindrome(str, i+1, j-1);
+    return checkPalindrome(str, ++i, --j);
 }
 int main(){
-    string name = "abcbae";
+    string name = "abcba";
     cout<<endl;
 
     bool isPalindrome = checkPalindrome(name, 0, name.length()-1);
